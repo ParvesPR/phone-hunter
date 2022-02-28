@@ -41,5 +41,25 @@ const phoneInfo = info => {
     const infoUrl = `https://openapi.programming-hero.com/api/phone/${info}`
     fetch(infoUrl)
         .then(res => res.json())
-        .then(infoData => console.log(infoData.data))
+        .then(infoData => showPhoneInfo(infoData.data))
+}
+
+const showPhoneInfo = phoneInfo => {
+    const phoneDetails = document.getElementById('phone-info');
+    phoneDetails.textContent = '';
+    const div = document.createElement('div');
+    div.classList.add('col');
+    div.innerHTML = `
+    <div class="card h-100">
+         <img src="${phoneInfo.image}" class="card-img-top w-50 mx-auto" alt="...">
+         <div class="card-body">
+           <h5 class="card-title">Phone Name: ${phoneInfo.name}</h5>
+           <p class="card-text">This card has even longer content than the first to show that equal height action.</p>
+         </div>
+        <div class="card-footer">
+          <small class="text-muted">Last updated 3 mins ago</small>
+        </div>
+        </div>
+    `;
+    phoneDetails.appendChild(div);
 }
