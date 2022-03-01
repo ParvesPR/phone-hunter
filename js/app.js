@@ -4,7 +4,7 @@ const loadPhones = () => {
     inputField.value = '';
     if (inputText == '') {
         const inputError = document.getElementById('error-input');
-        inputError.innerText = 'Please Search Phone Name';
+        inputError.innerText = 'Please search by phone name';
     } else {
         const inputError = document.getElementById('error-input');
         inputError.innerText = '';
@@ -12,12 +12,18 @@ const loadPhones = () => {
         fetch(phoneUrl)
             .then(res => res.json())
             .then(phoneData => allPhones(phoneData.data.slice(0, 20)))
+        const phoneInfo = document.getElementById('phone-info');
+        phoneInfo.innerHTML = '';
     }
 
 
 }
 
 const allPhones = phones => {
+    if (phones.length == 0) {
+        const inputError = document.getElementById('error-input');
+        inputError.innerText = 'No result found';
+    }
     const searchResult = document.getElementById('search-result');
     searchResult.textContent = '';
     for (const phone of phones) {
