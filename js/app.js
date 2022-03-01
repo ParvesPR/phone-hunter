@@ -51,18 +51,20 @@ const showPhoneInfo = phoneInfo => {
     div.classList.add('col');
     div.innerHTML = `
     <div class="card h-100">
-         <img src="${phoneInfo.image}" class=" card-img-top w-50 p-3 mx-auto" alt="...">
+         <img src="${phoneInfo.image}" class="card-img-top w-50 p-3 mx-auto" alt="...">
          <div class="card-body card_bg">
            <h5 class="card-title">Phone Name: ${phoneInfo.name}</h5>
            <small class="text-muted">${phoneInfo.releaseDate ? phoneInfo.releaseDate:'Released date not found'}</small>
            <p class="card-text text-start">
            <h6>Sotrage: <span class="fw-normal">${phoneInfo.mainFeatures.storage}</span></h6>
            <h6>Display: <span class="fw-normal">${phoneInfo.mainFeatures.displaySize}</span></h6>
-           <h6>Chipset: <span class="fw-normal">${phoneInfo.mainFeatures.chipSet}</span></h6>
-           <h6>Chipset: <span class="fw-normal">${phoneInfo.mainFeatures.memory}</span></h6>
+           <h6>Chipset: <span class="fw-normal">${phoneInfo.mainFeatures.chipSet ? phoneInfo.mainFeatures.chipSet:'Data not found' }</span></h6>
+           <h6>Memory: <span class="fw-normal">${phoneInfo.mainFeatures.memory ? phoneInfo.mainFeatures.memory:'Data not found'}</span></h6>
+           <h6>Sensors: <span class="fw-normal">${phoneInfo.mainFeatures.sensors}</span></h6>
            </p>
          </div>
         </div>
     `;
     phoneDetails.appendChild(div);
+
 }
