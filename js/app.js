@@ -5,7 +5,8 @@ const loadPhones = () => {
     if (inputText == '') {
         const inputError = document.getElementById('error-input');
         inputError.innerText = 'Please search by phone name';
-    } else {
+    } 
+    else {
         const inputError = document.getElementById('error-input');
         inputError.innerText = '';
         const phoneUrl = `https://openapi.programming-hero.com/api/phones?search=${inputText}`
@@ -15,14 +16,11 @@ const loadPhones = () => {
         const phoneInfo = document.getElementById('phone-info');
         phoneInfo.innerHTML = '';
     }
-
-
 }
-
 const allPhones = phones => {
     if (phones.length == 0) {
         const inputError = document.getElementById('error-input');
-        inputError.innerText = 'No result found';
+        inputError.innerText = 'No phone found';
     }
     const searchResult = document.getElementById('search-result');
     searchResult.textContent = '';
@@ -42,14 +40,12 @@ const allPhones = phones => {
         searchResult.appendChild(div)
     }
 }
-
 const phoneInfo = info => {
     const infoUrl = `https://openapi.programming-hero.com/api/phone/${info}`
     fetch(infoUrl)
         .then(res => res.json())
         .then(infoData => showPhoneInfo(infoData.data))
 }
-
 const showPhoneInfo = phoneInfo => {
     const phoneDetails = document.getElementById('phone-info');
     phoneDetails.textContent = '';
@@ -80,5 +76,4 @@ const showPhoneInfo = phoneInfo => {
         </div>
     `;
     phoneDetails.appendChild(div);
-
 }
