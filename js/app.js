@@ -11,7 +11,7 @@ const loadPhones = () => {
         const phoneUrl = `https://openapi.programming-hero.com/api/phones?search=${inputText}`
         fetch(phoneUrl)
             .then(res => res.json())
-            .then(phoneData => allPhones(phoneData.data))
+            .then(phoneData => allPhones(phoneData.data.slice(0, 20)))
     }
 
 
@@ -55,12 +55,20 @@ const showPhoneInfo = phoneInfo => {
          <div class="card-body card_bg">
            <h5 class="card-title">Phone Name: ${phoneInfo.name}</h5>
            <small class="text-muted">${phoneInfo.releaseDate ? phoneInfo.releaseDate:'Released date not found'}</small>
-           <p class="card-text text-start">
+           <p class="card-text text-start"><h5>Main Features</h5>
            <h6>Sotrage: <span class="fw-normal">${phoneInfo.mainFeatures.storage}</span></h6>
            <h6>Display: <span class="fw-normal">${phoneInfo.mainFeatures.displaySize}</span></h6>
            <h6>Chipset: <span class="fw-normal">${phoneInfo.mainFeatures.chipSet ? phoneInfo.mainFeatures.chipSet:'Data not found' }</span></h6>
            <h6>Memory: <span class="fw-normal">${phoneInfo.mainFeatures.memory ? phoneInfo.mainFeatures.memory:'Data not found'}</span></h6>
            <h6>Sensors: <span class="fw-normal">${phoneInfo.mainFeatures.sensors}</span></h6>
+           </p>
+           <p><h5>Others</h5>
+           <h6>WLAN: <span class="fw-normal">${phoneInfo?.others?.WLAN ? phoneInfo.others.WLAN:'N/A'}</span></h6>
+           <h6>Bluetooth: <span class="fw-normal">${phoneInfo?.others?.Bluetooth ? phoneInfo.others.Bluetooth:'N/A'}</span></h6>
+           <h6>GPS: <span class="fw-normal">${phoneInfo?.others?.GPS ? phoneInfo.others.GPS:'N/A'}</span></h6>
+           <h6>NFC: <span class="fw-normal">${phoneInfo?.others?.NFC ? phoneInfo.others.NFC:'N/A'}</span></h6>
+           <h6>Radio: <span class="fw-normal">${phoneInfo?.others?.Radio ? phoneInfo.others.Radio:'N/A'}</span></h6>
+           <h6>USB: <span class="fw-normal">${phoneInfo?.others?.USB ? phoneInfo.others.USB:'N/A'}</span></h6>
            </p>
          </div>
         </div>
