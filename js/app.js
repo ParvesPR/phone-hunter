@@ -51,14 +51,17 @@ const showPhoneInfo = phoneInfo => {
     div.classList.add('col');
     div.innerHTML = `
     <div class="card h-100">
-         <img src="${phoneInfo.image}" class="card-img-top w-50 mx-auto" alt="...">
-         <div class="card-body">
+         <img src="${phoneInfo.image}" class=" card-img-top w-50 p-3 mx-auto" alt="...">
+         <div class="card-body card_bg">
            <h5 class="card-title">Phone Name: ${phoneInfo.name}</h5>
-           <p class="card-text">This card has even longer content than the first to show that equal height action.</p>
+           <small class="text-muted">${phoneInfo.releaseDate ? phoneInfo.releaseDate:'Released date not found'}</small>
+           <p class="card-text text-start">
+           <h6>Sotrage: <span class="fw-normal">${phoneInfo.mainFeatures.storage}</span></h6>
+           <h6>Display: <span class="fw-normal">${phoneInfo.mainFeatures.displaySize}</span></h6>
+           <h6>Chipset: <span class="fw-normal">${phoneInfo.mainFeatures.chipSet}</span></h6>
+           <h6>Chipset: <span class="fw-normal">${phoneInfo.mainFeatures.memory}</span></h6>
+           </p>
          </div>
-        <div class="card-footer">
-          <small class="text-muted">Last updated 3 mins ago</small>
-        </div>
         </div>
     `;
     phoneDetails.appendChild(div);
